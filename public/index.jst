@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=640, user-scalable=yes" />
+    <title>Remote Javascript console</title>
+    <style type="text/css">
+      .snippet {
+        background: #c0c0c0;
+        padding: 5px 10px;
+      }
+    </style>
+    <script>
+        window.rjc = {
+            host: '{host}',
+            port: {port}
+        };
+    </script>
+    <script src="rjc.min.js"></script>
+  </head>
+  <body>
+    <h2>Remote Javascript console</h2>
+    <p>
+      <div>Activate debugging in your browser with the F12 key, and select "Console" in the debugger menu.</div>
+    <p>
+    </p>
+      <div>Insert this script tag in the page to be debugged :</div>
+      <pre class="snippet"><code>&lt;script src="http://{host}:{port}/console.js"&gt;&lt;/script&gt;</code></pre>
+    </p>
+    <p>
+      <div>A <a href="/test">test page</a> is also available.</div>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=640, user-scalable=yes" />
+    <title>Remote Javascript console - Test page</title>
+    <style type="text/css">
+      .button {
+        display:inline-block;
+        min-width: 50px;
+        width: 80px;
+        padding: 5px 10px;
+      }
+      .form {
+        width: 420px;
+        padding: 5px;
+      }
+      .message {
+        width: 420px;
+        padding: 5px;
+      }
+    </style>
+    <script>
+        window.rjc = {
+            host: '{host}',
+            port: {port}
+        };
+
+        function m() {
+          return document.querySelector('.message').value;
+        }
+
+        function formSubmit()
+        {
+          console.log(m());
+          return false
+        }
+    </script>
+    <script src="console.js"></script>
+  </head>
+  <body>
+    <h2>Remote Javascript console - Test page</h2>
+    <form class="form" onsubmit="return formSubmit();">
+      <div>
+        <input type="text" name="message" class="message" value="Hello world!" />
+      </div>
+      <div>
+        <input type="button" class="button" value="debug" onclick="console.debug(m());" />
+        <input type="button" class="button" value="error" onclick="console.error(m());" />
+        <input type="button" class="button" value="info" onclick="console.info(m());" />
+        <input type="submit" class="button" value="log" />
+        <input type="button" class="button" value="warn" onclick="console.warn(m());" />
+      </div>
+    </form>
+  </body>
+</html>
