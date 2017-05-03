@@ -1,8 +1,8 @@
 // Remote Javascript console receiver
 const socketIO = require('socket.io-client')
 
-var host = window.rjc.host || '{host}'
-var port = window.rjc.port || '{port}'
+var host = window.rjc && window.rjc.host || '{host}'
+var port = window.rjc && window.rjc.port || '{port}'
 
 function initialize() {
   if (!window.console) return
