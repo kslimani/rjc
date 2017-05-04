@@ -8,6 +8,8 @@ const socketIO = require('socket.io')
 const receiver = require('./receiver')
 const sender = require('./sender')
 
+const rootPath = '../public/'
+
 function render(str, data) {
   for (var prop in data)
     str = str.replace(new RegExp('{' + prop + '}', 'g'), data[prop])
@@ -19,7 +21,7 @@ function content(data, config, file) {
   if (!config.nocache && data) return data
 
   data = render(
-    fs.readFileSync(path.resolve(__dirname, '../public/' + file), 'utf8'),
+    fs.readFileSync(path.resolve(__dirname, rootPath + file), 'utf8'),
     config
   )
 
@@ -45,7 +47,7 @@ exports.create = function(config) {
       .get('/test', (req, res) => res.send(test = content(test, config, 'test.jst')))
       .get('/rjc.min.js', (req, res) => res.set('Content-Type', 'application/javascript').send(rjc = content(rjc, config, 'rconsole.min.js')))
       .get('/console.js', (req, res) => res.set('Content-Type', 'application/javascript').send(jc = content(jc, config, 'console.min.js')))
-      .get('/favicon.ico', (req, res) => res.sendFile(path.resolve(__dirname, '../public/favicon.ico')))
+      .get('/favicon.ico', (req, res) => res.sendFile(path.resolve(__dirname, rootPath + 'favicon.ico')))
   )
 
   const io = socketIO(server)
