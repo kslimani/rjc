@@ -5,6 +5,8 @@ const fs = require('fs')
 const http = require('http')
 const path = require('path')
 const socketIO = require('socket.io')
+const receiver = require('./receiver')
+const sender = require('./sender')
 
 function render(str, data) {
   for (var prop in data)
@@ -27,8 +29,9 @@ function content(data, config, file) {
 exports.defaultConfig = function() {
   return {
     host: '127.0.0.1',
-    port: 8080,
     nocache: false,
+    port: 8080,
+    scheme: 'http://',
   }
 }
 
@@ -56,3 +59,6 @@ exports.create = function(config) {
 
   return server
 }
+
+exports.receiver = receiver
+exports.sender = sender

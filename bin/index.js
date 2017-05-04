@@ -8,9 +8,10 @@ var config = server.defaultConfig()
 
 const optionList = [
   { name: 'help', alias: 'h', type: Boolean, description: 'Display this usage help.' },
-  { name: 'port', alias: 'p', type: Number, description: 'Listen port number.', defaultValue: config.port },
-  { name: 'host', alias: 'a', type: String, description: 'Listen ip address or hostname.', defaultValue: config.host },
+  { name: 'host', alias: 'a', type: String, description: 'Server ip address or hostname.', defaultValue: config.host },
   { name: 'nocache', alias: 'n', type: Boolean, description: 'Disable render cache.' },
+  { name: 'port', alias: 'p', type: Number, description: 'Server port number.', defaultValue: config.port },
+  { name: 'scheme', alias: 's', type: String, description: 'Server scheme.', defaultValue: config.scheme },
 ]
 
 const options = commandLineArgs(optionList)
@@ -32,8 +33,9 @@ if (options.help) {
 options.host && (config.host = options.host)
 options.port && (config.port = options.port)
 options.nocache && (config.nocache = true)
+options.scheme && (config.scheme = options.scheme)
 
 server.create(config)
   .listen(config.port, config.host, () => {
-    console.log('Remote Javascript console server listening on ' + config.host + ':' + config.port)
+    console.log('Remote Javascript console server listening on ' + config.scheme + config.host + ':' + config.port)
   })
