@@ -1,23 +1,8 @@
 // Remote Javascript console receiver
-const socketIO = require('socket.io-client')
+const receiver = require('./receiver')
 
 var host = window.rjc && window.rjc.host || '{host}'
 var port = window.rjc && window.rjc.port || '{port}'
+var scheme = window.rjc && window.rjc.scheme || '{scheme}'
 
-function initialize() {
-  if (!window.console) return
-
-  socketIO
-    .connect('http://' + host + ':' + port)
-    .on('error', function (data) {
-      console.log('Error: failed to connect to remote javascript console server')
-    })
-    .on('connect', function () {
-      console.log('Remote console receiver is connected to http://' + host + ':' + port)
-    })
-    .on('rconsole', function (data) {
-      window.console[data.f] && window.console[data.f].apply(window, Object.values(data.d))
-    })
-}
-
-initialize()
+receiver.create(scheme + host + ':' + port)
