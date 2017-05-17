@@ -36,23 +36,23 @@ exports.create = function(url, options) {
   window.console = {
     debug: function() {
       send('debug', arguments)
-      prev.debug && prev.debug.apply(window, arguments)
+      prev.debug && prev.debug.apply(prev, arguments)
     },
     error: function() {
       send('error', arguments)
-      prev.error && prev.error.apply(window, arguments)
+      prev.error && prev.error.apply(prev, arguments)
     },
     info: function() {
       send('info', arguments)
-      prev.info && prev.info.apply(window, arguments)
+      prev.info && prev.info.apply(prev, arguments)
     },
     log: function() {
       send('log', arguments)
-      prev.log && prev.log.apply(window, arguments)
+      prev.log && prev.log.apply(prev, arguments)
     },
     warn: function() {
       send('warn', arguments)
-      prev.warn && prev.warn.apply(window, arguments)
+      prev.warn && prev.warn.apply(prev, arguments)
     },
     restore: function() {
       socket && socket.disconnect()
