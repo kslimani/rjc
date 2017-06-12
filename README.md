@@ -12,7 +12,7 @@ $ npm install -g rjc
 
 ## Usage
 
-Let's suppose the IP address of the machine running the server is `192.168.1.5`.
+Let's suppose that the IP address of the machine on which the server is to be run is `192.168.1.5`.
 
 Run the server (use -h for help) :
 
@@ -22,7 +22,9 @@ $ rjc -a 192.168.1.5
 
 Then open `http://192.168.1.5:8080` in your browser to display remote console homepage.
 
-Finally, insert the displayed script tag in your application. For example :
+Finally, insert the displayed script tag in the page to be debugged. For example :
+
+(copy paste from remote console homepage)
 
 ```html
 <script src="http://192.168.1.5:8080/console.js"></script>
