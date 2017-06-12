@@ -1,7 +1,7 @@
 // Receiver module
 const socketIO = require('socket.io-client')
 
-exports.create = function(url, options) {
+exports.create = function (url, options) {
   if (!window.console) return null
 
   return socketIO(url, options)

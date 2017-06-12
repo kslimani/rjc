@@ -11,8 +11,9 @@ const sender = require('./sender')
 const rootPath = '../public/'
 
 function render(str, data) {
-  for (var prop in data)
+  for (var prop in data) {
     str = str.replace(new RegExp('{' + prop + '}', 'g'), data[prop])
+  }
 
   return str
 }
@@ -28,22 +29,22 @@ function content(data, config, file) {
   return data
 }
 
-exports.defaultConfig = function() {
+exports.defaultConfig = function () {
   return {
     host: '127.0.0.1',
     nocache: false,
     port: 8080,
-    scheme: 'http://',
+    scheme: 'http://'
   }
 }
 
-exports.create = function(config) {
+exports.create = function (config) {
   var home, test, rjc, jc
 
   const server = http.createServer(
     express()
       .use(cors({origin: true}))
-      .get('/', (req, res) => res.send(home = content(home, config, 'index.jst') ))
+      .get('/', (req, res) => res.send(home = content(home, config, 'index.jst')))
       .get('/test', (req, res) => res.send(test = content(test, config, 'test.jst')))
       .get('/rjc.min.js', (req, res) => res.set('Content-Type', 'application/javascript').send(rjc = content(rjc, config, 'rconsole.min.jst')))
       .get('/console.js', (req, res) => res.set('Content-Type', 'application/javascript').send(jc = content(jc, config, 'console.min.jst')))
