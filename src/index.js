@@ -45,8 +45,8 @@ exports.create = function(config) {
       .use(cors({origin: true}))
       .get('/', (req, res) => res.send(home = content(home, config, 'index.jst') ))
       .get('/test', (req, res) => res.send(test = content(test, config, 'test.jst')))
-      .get('/rjc.min.js', (req, res) => res.set('Content-Type', 'application/javascript').send(rjc = content(rjc, config, 'rconsole.min.js')))
-      .get('/console.js', (req, res) => res.set('Content-Type', 'application/javascript').send(jc = content(jc, config, 'console.min.js')))
+      .get('/rjc.min.js', (req, res) => res.set('Content-Type', 'application/javascript').send(rjc = content(rjc, config, 'rconsole.min.jst')))
+      .get('/console.js', (req, res) => res.set('Content-Type', 'application/javascript').send(jc = content(jc, config, 'console.min.jst')))
       .get('/favicon.ico', (req, res) => res.sendFile(path.resolve(__dirname, rootPath + 'favicon.ico')))
   )
 
