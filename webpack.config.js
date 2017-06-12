@@ -14,7 +14,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'public'),
-    filename: '[name].min.js',
+    filename: '[name].min.jst',
   },
   plugins: p
 }

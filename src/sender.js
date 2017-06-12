@@ -1,7 +1,7 @@
 // Sender module
 const socketIO = require('socket.io-client')
 
-exports.create = function(url, options) {
+exports.create = function (url, options) {
   if (!window.console) return null
 
   var socket, prev
@@ -12,11 +12,11 @@ exports.create = function(url, options) {
     try {
       // "Maximum Call Stack Size Exceeded" error may happen
       socket.emit('console', {f: f, d: d})
-    } catch(mcsse) {
+    } catch (mcsse) {
       try {
         // "Converting circular structure to JSON" error may happen
         socket.emit('console', {f: f, d: JSON.parse(JSON.stringify(d))})
-      } catch(e) {
+      } catch (e) {
         // Sorry bro :~(
         socket.emit('console', {f: 'error', d: ['Remote console sender error: ' + e.message]})
       }
@@ -34,27 +34,27 @@ exports.create = function(url, options) {
   prev = window.console
 
   window.console = {
-    debug: function() {
+    debug: function () {
       send('debug', arguments)
       prev.debug && prev.debug.apply(prev, arguments)
     },
-    error: function() {
+    error: function () {
       send('error', arguments)
       prev.error && prev.error.apply(prev, arguments)
     },
-    info: function() {
+    info: function () {
       send('info', arguments)
       prev.info && prev.info.apply(prev, arguments)
     },
-    log: function() {
+    log: function () {
       send('log', arguments)
       prev.log && prev.log.apply(prev, arguments)
     },
-    warn: function() {
+    warn: function () {
       send('warn', arguments)
       prev.warn && prev.warn.apply(prev, arguments)
     },
-    restore: function() {
+    restore: function () {
       socket && socket.disconnect()
       window.console = prev
     }
