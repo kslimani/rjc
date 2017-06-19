@@ -23,6 +23,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
+    "circular-json": "^0.3.1",
     "command-line-args": "^4.0.3",
     "command-line-usage": "^4.0.0",
     "cors": "^2.8.3",
