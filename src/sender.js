@@ -1,5 +1,6 @@
 // Sender module
 const socketIO = require('socket.io-client')
+const CircularJSON = require('circular-json')
 
 exports.create = function (url, options) {
   if (!window.console) return null
@@ -10,16 +11,9 @@ exports.create = function (url, options) {
     if (!socket) return
 
     try {
-      // "Maximum Call Stack Size Exceeded" error may happen
-      socket.emit('console', {f: f, d: d})
-    } catch (mcsse) {
-      try {
-        // "Converting circular structure to JSON" error may happen
-        socket.emit('console', {f: f, d: JSON.parse(JSON.stringify(d))})
-      } catch (e) {
-        // Sorry bro :~(
-        socket.emit('console', {f: 'error', d: ['Remote console sender error: ' + e.message]})
-      }
+      socket.emit('console', {f: f, d: CircularJSON.stringify(d)})
+    } catch (e) {
+      socket.emit('console', {f: 'error', d: ['Remote console sender error: ' + e.message]})
     }
   }
 
