@@ -20,7 +20,8 @@
   "scripts": {
     "dev": "webpack --progress --watch",
     "dist": "npm run lint && webpack --progress",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "start": "./bin/index.js --nocache"
   },
   "dependencies": {
     "circular-json": "^0.3.1",
@@ -37,8 +38,6 @@
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "uglify-js": "^3.0.18",
-    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^3.0.0"
   }
 }

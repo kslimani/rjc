@@ -1,11 +1,10 @@
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 var p = []
 
 if (process.env.npm_lifecycle_event === 'dist') {
-  p.push(new UglifyJsPlugin({
+  p.push(new webpack.optimize.UglifyJsPlugin({
     test: /\.js($|\?)|\.jst($|\?)/i, // Default is /\.js($|\?)/i
     comments: false,
   }))
