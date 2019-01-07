@@ -1,6 +1,6 @@
 // Sender module
 const socketIO = require('socket.io-client')
-const CircularJSON = require('circular-json')
+const Flatted = require('flatted/cjs')
 
 exports.create = function (url, options) {
   if (!window.console) return null
@@ -11,14 +11,14 @@ exports.create = function (url, options) {
     if (!socket) return
 
     try {
-      socket.emit('console', {f: f, d: CircularJSON.stringify(d)})
+      socket.emit('console', {f: f, d: Flatted.stringify(d)})
     } catch (e) {
       socket.emit('console', {f: 'error', d: ['Remote console sender error: ' + e.message]})
     }
   }
 
   socket = socketIO(url, options)
-    .on('error', function (data) {
+    .on('error', function () {
       console.log('Error: failed to connect to remote javascript console server')
     })
     .on('connect', function () {
