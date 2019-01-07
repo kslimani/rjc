@@ -1,7 +1,7 @@
 {
   "author": "kslimani",
   "name": "rjc",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Yet another remote Javascript console.",
   "license": "MIT",
   "repository": {
