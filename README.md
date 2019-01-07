@@ -32,4 +32,4 @@ Finally, insert the displayed script tag in the page to be debugged. For example
 
 ## Limitations
 
-When sending object via [socket.io](https://github.com/socketio/socket.io), they are serialized into JSON which only retains the properties of the object. The type of the object and the methods are not retained. [CircularJSON](https://github.com/WebReflection/circular-json) is used for data serialization.
+When sending object via [socket.io](https://github.com/socketio/socket.io), they are serialized into JSON which only retains the properties of the object. The type of the object and the methods are not retained. [Flatted](https://github.com/WebReflection/flatted) is used for data serialization.

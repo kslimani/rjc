@@ -18,26 +18,26 @@
   },
   "main": "./src/index.js",
   "scripts": {
-    "dev": "webpack --progress --watch",
-    "dist": "npm run lint && webpack --progress",
+    "dev": "webpack --progress --watch --mode production",
+    "dist": "npm run lint && webpack --progress --mode production",
     "lint": "eslint src",
     "start": "./bin/index.js --nocache"
   },
   "dependencies": {
-    "circular-json": "^0.3.1",
-    "command-line-args": "^4.0.3",
-    "command-line-usage": "^4.0.0",
-    "cors": "^2.8.3",
-    "express": "^4.15.2",
-    "socket.io": "^1.7.3"
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "flatted": "^2.0.0",
+    "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.0.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.3.0",
-    "eslint-plugin-node": "^5.0.0",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "webpack": "^3.0.0"
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.5",
+    "eslint": "^5.12.0",
+    "uglifyjs-webpack-plugin": "^2.1.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.1"
   }
 }
