@@ -12,7 +12,13 @@ exports.create = function (url, options) {
     .on('connect', function () {
       console.log('Remote console receiver is connected to ' + url)
     })
-    .on('rconsole', function (data) {
-      window.console[data.f] && window.console[data.f].apply(window, Object.values(Flatted.parse(data.d)))
+    .on('rconsole', function (data, args) {
+      try {
+        args = Object.values(Flatted.parse(data.d))
+      } catch (e) {
+        // JSON parse failure
+        args = ['rjc parse error', e]
+      }
+      window.console[data.f] && window.console[data.f].apply(window, args)
     })
 }
