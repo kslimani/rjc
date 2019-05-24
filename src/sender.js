@@ -7,13 +7,37 @@ exports.create = function (url, options) {
 
   var socket, prev
 
+  function cure(arr) {
+    arr.forEach || (arr = Array.prototype.slice.call(arr))
+    var cured = []
+
+    arr.forEach(function (a) {
+      try {
+        Flatted.stringify(a)
+        cured.push(a)
+      } catch (e) {
+        // Replace unserializable argument
+        cured.push(['stringify_failed'])
+      }
+    })
+
+    return cured
+  }
+
   function send(f, d) {
     if (!socket) return
 
     try {
-      socket.emit('console', {f: f, d: Flatted.stringify(d)})
+      d = Flatted.stringify(d)
     } catch (e) {
-      socket.emit('console', {f: 'error', d: ['Remote console sender error: ' + e.message]})
+      // "best effort" serialization
+      d = Flatted.stringify(cure(d))
+    }
+
+    try {
+      socket.emit('console', {f: f, d: d})
+    } catch (e) {
+      socket.emit('console', {f: 'error', d: Flatted.stringify(['Remote console sender error: ' + e.message, e])})
     }
   }
 
