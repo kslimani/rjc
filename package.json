@@ -24,20 +24,20 @@
     "start": "./bin/index.js --nocache"
   },
   "dependencies": {
-    "command-line-args": "^5.0.2",
+    "command-line-args": "5.0.2",
     "command-line-usage": "^5.0.5",
     "cors": "^2.8.5",
-    "express": "^4.16.4",
+    "express": "^4.17.0",
     "flatted": "^2.0.0",
     "socket.io": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3",
-    "babel-loader": "^8.0.5",
-    "eslint": "^5.12.0",
-    "uglifyjs-webpack-plugin": "^2.1.1",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.1"
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "eslint": "^5.16.0",
+    "uglifyjs-webpack-plugin": "^2.1.3",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
   }
 }
