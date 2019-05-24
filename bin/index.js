@@ -15,7 +15,14 @@ const optionList = [
   { name: 'url', alias: 'u', type: String, description: 'Proxy server redirect url.', defaultValue: config.url },
 ]
 
-const options = commandLineArgs(optionList)
+var options = {}
+
+try {
+  options = commandLineArgs(optionList)
+} catch (e) {
+  // Assume e is UNKNOWN_OPTION error
+  options.help = true
+}
 
 if (options.help) {
   console.log(commandLineUsage([
