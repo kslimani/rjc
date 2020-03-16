@@ -1,6 +1,5 @@
 const path = require('path')
-const webpack = require('webpack')
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin');
 
 var options = {
   entry: {
@@ -30,15 +29,9 @@ var options = {
 
 if (process.env.npm_lifecycle_event === 'dist') {
   options.optimization.minimizer = [
-    new UglifyJsPlugin({
-      test: /\.js($|\?)|\.jst($|\?)/i, // Default is /\.js($|\?)/i
-      parallel: true,
-      uglifyOptions: {
-        output: {
-          comments: false,
-        },
-      }
-    })
+    new TerserPlugin({
+      cache: true, // TODO: set to false if Webpack upgraded to 5.x ?
+    }),
   ]
 } else {
   options.optimization.minimize = false
