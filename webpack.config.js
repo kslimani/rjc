@@ -30,7 +30,8 @@ var options = {
 if (process.env.npm_lifecycle_event === 'dist') {
   options.optimization.minimizer = [
     new TerserPlugin({
-      cache: true, // TODO: set to false if Webpack upgraded to 5.x ?
+      test: /\.m?js(\?.*)?$|\.m?jst(\?.*)?$/i, // Default is /\.m?js(\?.*)?$/i
+      extractComments: false,
     }),
   ]
 } else {
