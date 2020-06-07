@@ -32,6 +32,11 @@ if (process.env.npm_lifecycle_event === 'dist') {
     new TerserPlugin({
       test: /\.m?js(\?.*)?$|\.m?jst(\?.*)?$/i, // Default is /\.m?js(\?.*)?$/i
       extractComments: false,
+      terserOptions: {
+        output: {
+          comments: false,
+        },
+      },
     }),
   ]
 } else {
