@@ -5,8 +5,6 @@ const fs = require('fs')
 const http = require('http')
 const path = require('path')
 const socketIO = require('socket.io')
-const receiver = require('./receiver')
-const sender = require('./sender')
 
 const rootPath = '../public/'
 
@@ -70,6 +68,3 @@ exports.create = function (config) {
 
   return server
 }
-
-exports.receiver = receiver
-exports.sender = sender
