@@ -1,6 +1,6 @@
 // Receiver module
 const socketIO = require('socket.io-client')
-const Flatted = require('flatted/cjs')
+const { parse } = require('flatted')
 
 exports.create = function (url, options) {
   if (!window.console) return null
@@ -14,7 +14,7 @@ exports.create = function (url, options) {
     })
     .on('rconsole', function (data, args) {
       try {
-        args = Object.values(Flatted.parse(data.d))
+        args = Object.values(parse(data.d))
       } catch (e) {
         // JSON parse failure
         args = ['rjc parse error', e]

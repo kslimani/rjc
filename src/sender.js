@@ -1,6 +1,6 @@
 // Sender module
 const socketIO = require('socket.io-client')
-const Flatted = require('flatted/cjs')
+const { stringify } = require('flatted')
 
 exports.create = function (url, options) {
   if (!window.console) return null
@@ -13,7 +13,7 @@ exports.create = function (url, options) {
 
     arr.forEach(function (a) {
       try {
-        Flatted.stringify(a)
+        stringify(a)
         cured.push(a)
       } catch (e) {
         // Replace unserializable argument
@@ -28,16 +28,16 @@ exports.create = function (url, options) {
     if (!socket) return
 
     try {
-      d = Flatted.stringify(d)
+      d = stringify(d)
     } catch (e) {
       // "best effort" serialization
-      d = Flatted.stringify(cure(d))
+      d = stringify(cure(d))
     }
 
     try {
       socket.emit('console', {f: f, d: d})
     } catch (e) {
-      socket.emit('console', {f: 'error', d: Flatted.stringify(['Remote console sender error: ' + e.message, e])})
+      socket.emit('console', {f: 'error', d: stringify(['Remote console sender error: ' + e.message, e])})
     }
   }
 
