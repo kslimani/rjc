@@ -15,7 +15,7 @@ exports.create = function (url, options) {
       try {
         stringify(a)
         cured.push(a)
-      } catch (e) {
+      } catch (e) { // eslint-disable-line no-unused-vars
         // Replace unserializable argument
         cured.push(['stringify_failed'])
       }
@@ -29,7 +29,7 @@ exports.create = function (url, options) {
 
     try {
       d = stringify(d)
-    } catch (e) {
+    } catch (e) { // eslint-disable-line no-unused-vars
       // "best effort" serialization
       d = stringify(cure(d))
     }
